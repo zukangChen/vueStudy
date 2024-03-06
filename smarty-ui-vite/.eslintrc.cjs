@@ -24,6 +24,7 @@ module.exports = {
     parser: '@typescript-eslint/parser' // 解析 .ts 文件
   },
   rules: {
+    'no-var': 'error',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'prettier/prettier': 'error'

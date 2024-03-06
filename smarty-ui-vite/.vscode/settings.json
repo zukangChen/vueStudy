@@ -1,4 +1,5 @@
 {
+  "eslint.validate": ["typescript"],
   "editor.codeActionsOnSave": { // 保存即格式化  
     "source.fixAll": true,
     "source.fixAll.eslint": true
