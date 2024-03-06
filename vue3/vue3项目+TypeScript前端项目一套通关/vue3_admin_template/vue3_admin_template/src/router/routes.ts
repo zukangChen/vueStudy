@@ -93,6 +93,15 @@ export const constantRoute = [
           icon: 'calendar',
         },
       },
+      {
+        path: '/custom/PieEcharts',
+        component: () => import('@/views/custom/pieEcharts/index.vue'),
+        name: 'PieEcharts',
+        meta: {
+          title: '饼图图表组件',
+          icon: 'calendar',
+        },
+      },
     ],
   },
 ]

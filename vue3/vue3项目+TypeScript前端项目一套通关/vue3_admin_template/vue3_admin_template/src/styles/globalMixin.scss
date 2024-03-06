@@ -1,0 +1,17 @@
+@mixin box-shadow($bulr: 20px, $color: #1989fa7a) {
+  -webkit-box-shadow: 0px 0px $bulr $color;
+  -moz-box-shadow: 0px 0px $bulr $color;
+  box-shadow: 0px 0px $bulr $color;
+}
+
+$base:calc(100rem / 1920);
+$bs:calc(100vw / 1920);
+$bh:calc(100vh / 1080);
+
+
+
+@media all and (-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+  /* Windows 平台特定样式 */
+  $window-height: calc((100vh - 90px) / 1080)
+}

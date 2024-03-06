@@ -1,0 +1,272 @@
+// card组件正常字体
+@mixin card_text {
+  font-size: 18*$base;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #5B6276;
+}
+
+// card组件数量加黑
+@mixin card_count_blank {
+  font-family: DIN-Bold;
+  font-weight: 700;
+  font-size: 24*$base;
+  color: #0B0F5A;
+}
+
+// card组件数量加红
+@mixin card_count_red {
+  font-family: DIN-Bold;
+  font-weight: 700;
+  font-size: 24*$base;
+  color: #FF6565;
+}
+
+// card组件尺寸颜色设置
+@mixin card_box {
+  width: 800*$bs;
+  height: 664*$base;
+  background-color: #ffffffc2;
+  border-radius: 6*$base;
+}
+
+@mixin table_card_box {
+  width: 1042*$bs;
+  height: 664*$base;
+  background: #ffffffc2;
+  border-radius: 6*$base;
+  overflow: hidden;
+}
+
+@mixin table_common {
+  width: 50vw;
+}
+
+// echarts组件尺寸设置
+@mixin chart_size {
+  width: 43vw;
+  height: 600*$base;
+}
+
+// 自定义按钮
+@mixin btn {
+  width: 98*$base;
+  height: 36*$base;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  font-size: 18*$base;
+  color: #6871E9;
+  letter-spacing: 0.82*$base;
+  background: #E3E8FF;
+  border: 1.6*$base solid #B9C0FF;
+  box-shadow: 0 2*$base 4*$base 0 #7f89d752;
+  border-radius: 3*$base;
+  text-align: center;
+  line-height: 36*$base;
+
+  // padding: 5*$base 30*$base;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// 自定义按钮激活效果
+@mixin btn_active {
+  box-sizing: border-box;
+  color: #fff;
+  background: #5563f5d1;
+  box-shadow: 0 2px 6px 0 #7f89d799;
+}
+
+// 2.0新版btn样式
+@mixin btn_2_0 {
+  // width: 108*$base;
+  // height: 36*$base;
+  box-sizing: border-box;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  font-size: 18*$base;
+  color: #6871E9;
+  padding: 6*$base 36*$base;
+  // transform: translateY(-10*$base);
+  background-image: linear-gradient(180deg, #F3F5FF 0%, #D6DEFF 100%);
+  border: 1*$base solid #b9c0ffe6;
+  border-radius: 2*$base;
+  cursor: pointer;
+  box-shadow: 0 2*$base 4*$base 0 #7f89d752;
+  margin-left: 18*$base;
+
+  &.active {
+    color: #FFFFFF;
+    background-image: linear-gradient(180deg, #8C97FF 0%, #707CF7 100%);
+    // border: 2*$base solid #6a70be80;
+    box-shadow: 0 6*$base 8*$base 0 #7f89d799;
+  }
+}
+
+@mixin select_self {
+  .el-input__wrapper {
+    background: #6c55f8;
+  }
+
+  .el-input__inner {
+    color: #fff;
+  }
+
+  .el-input .el-select__caret.el-icon {
+    color: #fff;
+  }
+}
+
+// select选择器下拉框
+@mixin select_option {
+  background: #090a2a8f;
+  box-shadow: 0 2*$base 4*$base 0 #646fc229;
+  border-radius: 6*$base;
+
+
+  .el-select-dropdown__item {
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+    font-size: 16*$bs;
+    color: #FFFFFF;
+  }
+
+  .el-select-dropdown__item.hover,
+  .el-select-dropdown__item:hover,
+  .el-select-dropdown__item.selected {
+    background: #ffffff4d;
+  }
+}
+
+@mixin select_self_2_0 {
+  width: 158*$bs;
+  height: 36*$base;
+  box-shadow: 0 2*$bs 4*$bs 0 #7f89d752;
+  border-radius: 2.21*$bs;
+  border: none;
+
+  ::v-deep(.el-input__wrapper) {
+    height: 35*$bs !important;
+  }
+
+  ::v-deep(.el-input__inner) {
+    height: 30*$bs !important;
+  }
+
+  ::v-deep(.el-input__inner),
+  ::v-deep(.el-input__wrapper) {
+    background: #E2E8FF;
+    color: #6871E9;
+    border: none;
+    font-size: 14*$bs;
+
+  }
+}
+
+@mixin select_self_2_0_active {
+  width: 158*$bs;
+  height: 36*$base;
+  box-shadow: 0 2*$bs 4*$bs 0 #7f89d752;
+  border: 1*$base solid #8892EC;
+  border-radius: 2.21*$bs;
+  border: none;
+
+  ::v-deep(.el-input__wrapper) {
+    height: 35*$bs !important;
+  }
+
+  ::v-deep(.el-input__inner) {
+    height: 30*$bs !important;
+  }
+
+  ::v-deep(.el-input__inner),
+  ::v-deep(.el-input__wrapper) {
+    background-image: linear-gradient(180deg, #EDF1FF 0%, #D6DFFF 100%);
+    color: #6871E9;
+    border: none;
+    font-size: 20*$bs;
+    font-family: PingFangSC-Medium;
+    font-weight: 500;
+
+  }
+}
+
+@mixin common_table_for_multiple_header {
+  :deep(.el-table thead.is-group th.el-table__cell) {
+    background: #fff !important;
+    padding: 0;
+    padding-top: 2*$base;
+  }
+
+  :deep(.el-table thead.is-group th.el-table__cell .cell) {
+    opacity: 0.74;
+    background: #e3e8ff;
+    border-radius: 2*$base;
+    border: 1*$base solid #e3e8ff;
+    margin: 0 5*$base;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32*$base;
+  }
+
+  :deep(.el-table thead.is-group .thClassName:nth-child(1) th.el-table__cell) {
+    padding: 2*$base;
+  }
+
+  :deep(.el-table thead.is-group .thClassName:nth-child(1) th.el-table__cell:nth-child(-n + 3) div) {
+    height: 60*$base;
+    padding: 0;
+  }
+
+  :deep(.el-table thead.is-group .thClassName:nth-child(n + 4) th.el-table__cell:nth-child(n + 3) div) {
+    height: 30*$base;
+    padding: 0;
+  }
+}
+
+@mixin common_table_for_multiple_header_for_useRatio {
+  :deep(.el-table thead.is-group th.el-table__cell) {
+    background: #fff !important;
+    padding: 0;
+    padding-top: 2*$base;
+  }
+
+  :deep(.el-table thead.is-group th.el-table__cell .cell) {
+    opacity: 0.74;
+    background: #e3e8ff;
+    border-radius: 2*$base;
+    border: 1px solid #e3e8ff;
+    margin: 0 5*$base;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32*$base;
+  }
+
+  :deep(.el-table thead.is-group .thClassName:nth-child(1) th.el-table__cell) {
+    padding: 2*$base;
+  }
+
+  :deep(.el-table thead.is-group .thClassName:nth-child(1) th.el-table__cell:nth-child(-n + 1) div) {
+    height: 60*$base;
+    padding: 0;
+  }
+
+  :deep(.el-table thead.is-group .thClassName:nth-child(n + 1) th.el-table__cell:nth-child(n + 3) div) {
+    height: 30*$base;
+    padding: 0;
+  }
+}
+
+// 地勘模块navCard选中效果
+@mixin navCardActive {
+  background: #3242cff7;
+  box-shadow: 0 9*$base 31*$base 4*$base #5565f4a8;
+  border-radius: 13.32 * $base;
+  transform: scale(1);
+}
+
+
+
