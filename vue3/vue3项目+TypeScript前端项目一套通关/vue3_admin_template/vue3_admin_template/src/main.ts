@@ -33,7 +33,7 @@ app.use(pinia)
 //注册模板路由
 app.use(router)
 //引入路由鉴权文件
-import './permisstion'
+// import './permisstion' // 将路由权限注释可以不进行登录进入页面
 //引入自定义指令文件
 import { isHasButton } from '@/directive/has'
 isHasButton(app)
