@@ -24,6 +24,7 @@ import echarts from '@/components/Echarts'
 // 引入rem适配
 import rem from '@/utils/rem'
 
+import CardView from '@/components/CardView/index.vue'
 //获取应用实例对象
 const app = createApp(App)
 //安装element-plus插件
@@ -33,6 +34,10 @@ app.use(ElementPlus, {
 })
 //安装自定义插件
 app.use(gloalComponent)
+
+//
+app.component('CardView', CardView)
+
 //安装仓库
 app.use(pinia)
 //注册模板路由
