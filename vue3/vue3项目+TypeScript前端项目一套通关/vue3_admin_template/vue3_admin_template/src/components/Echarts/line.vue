@@ -35,10 +35,13 @@ watch(
 		}
 		init()
 	}),
-	{ deep: true }
+	{ deep: true },
 )
 onMounted(() => {
-	init()
+	setTimeout(() => {
+		// 延迟渲染，防止图表渲染未占满父盒子
+		init()
+	})
 })
 let isStop = false
 onUnmounted(() => {
@@ -95,7 +98,7 @@ const initChat = () => {
 					str += `${
 						a.marker
 					}<span style="color:#fff"><span style="width:${fontSizeWidth(
-						60
+						60,
 					)}px;display:inline-block;">${a.seriesName}</span>`
 					str += `<span style="min-width:8em;text-align:right;display:inline-block;font-weight:600">${
 						a.value != 'undefined' ? a.value : '--'
@@ -217,7 +220,7 @@ const initChat2 = () => {
 		})
 		opts.yAxis[0].max = yAxisData.reduce(
 			(s, a) => (s > Number(a) ? s : Number(a)),
-			0
+			0,
 		)
 		opts.yAxis[0].max = (
 			opts.yAxis[0].max +
@@ -226,7 +229,7 @@ const initChat2 = () => {
 		opts.yAxis[0].min = (
 			yAxisData.reduce(
 				(s, a) => (!a || s < Number(a) ? s : Number(a)),
-				Number(yAxisData[0])
+				Number(yAxisData[0]),
 			) -
 			opts.yAxis[0].max * opts.limitMin
 		).toFixed(0)
@@ -240,7 +243,7 @@ const initChat2 = () => {
 		})
 		opts.yAxis[1].max = yAxisData.reduce(
 			(s, a) => (s > Number(a) ? s : Number(a)),
-			0
+			0,
 		)
 		opts.yAxis[1].max = (
 			opts.yAxis[1].max +
@@ -249,7 +252,7 @@ const initChat2 = () => {
 		opts.yAxis[1].min = (
 			yAxisData.reduce(
 				(s, a) => (!a || s < Number(a) ? s : Number(a)),
-				Number(yAxisData[0])
+				Number(yAxisData[0]),
 			) -
 			opts.yAxis[1].max * opts.limitMin
 		).toFixed(0)
@@ -276,10 +279,10 @@ const initChat2 = () => {
 					str += `${
 						a.marker
 					}<span style="color:#fff"><span style="width:10em;display:inline-block;;font-size: ${fontSizeWidth(
-						18
+						18,
 					)}px">${a.seriesName}</span>`
 					str += `<span style="text-align:right;display:inline-block;font-weight:600;font-size: ${fontSizeWidth(
-						18
+						18,
 					)}px">${a.value != 'undefined' && a.value ? a.value : '--'}${
 						opts.data[a.seriesIndex].unit
 					}</span></span><br>`

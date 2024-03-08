@@ -79,7 +79,10 @@ watch(
 )
 
 onMounted(() => {
-	init()
+	setTimeout(() => {
+		// 延迟渲染，防止图表渲染未占满父盒子
+		init()
+	})
 })
 let isStop = false
 onUnmounted(() => {

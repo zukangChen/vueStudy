@@ -31,10 +31,13 @@ watch(
 		}
 		init()
 	}),
-	{ deep: true }
+	{ deep: true },
 )
 onMounted(() => {
-	init()
+	setTimeout(() => {
+		// 延迟渲染，防止图表渲染未占满父盒子
+		init()
+	})
 })
 let isStop = false
 onUnmounted(() => {
@@ -85,15 +88,15 @@ const initChat = () => {
 			(
 				yAxisData.reduce((s, a) => (s > Number(a) ? s : Number(a)), 0) *
 				(opts.limitMax || 1.1)
-			).toFixed(2)
+			).toFixed(2),
 		)
 		opts.yAxis[0].min = Number(
 			(
 				yAxisData.reduce(
 					(s, a) => (s < Number(a) ? s : Number(a)),
-					Number(yAxisData[0])
+					Number(yAxisData[0]),
 				) * (opts.limitMin || 0.95)
-			).toFixed(2)
+			).toFixed(2),
 		)
 	}
 	if (opts.limitMaxMin && opts.yAxis.length && opts.yAxis[1]) {
@@ -105,12 +108,12 @@ const initChat = () => {
 		})
 		opts.yAxis[1].max = yAxisData.reduce(
 			(s, a) => (s > Number(a) ? s : Number(a)),
-			0
+			0,
 		)
 		opts.yAxis[1].min = (
 			yAxisData.reduce(
 				(s, a) => (s < Number(a) ? s : Number(a)),
-				Number(yAxisData[0])
+				Number(yAxisData[0]),
 			) -
 			opts.yAxis[1].max * 0.05
 		).toFixed(0)
@@ -149,7 +152,7 @@ const initChat = () => {
 			formatter: (data: any) => {
 				let str = `${data[0].name}<br>`
 				const newData = data.filter(
-					(i: any) => i.value !== null && i.value !== undefined
+					(i: any) => i.value !== null && i.value !== undefined,
 				)
 				newData.map((a: any) => {
 					str += `${a.marker}<span style="color:#fff"><span style="width:5em;display:inline-block;">${a.seriesName}</span>`
@@ -302,15 +305,15 @@ const initChat2 = () => {
 			(
 				yAxisData.reduce((s, a) => (s > Number(a) ? s : Number(a)), 0) *
 				(opts.limitMax || 1.1)
-			).toFixed(2)
+			).toFixed(2),
 		)
 		opts.yAxis[0].min = Number(
 			(
 				yAxisData.reduce(
 					(s, a) => (s < Number(a) ? s : Number(a)),
-					Number(yAxisData[0])
+					Number(yAxisData[0]),
 				) * (opts.limitMin || 0.95)
-			).toFixed(2)
+			).toFixed(2),
 		)
 	}
 	if (opts.limitMaxMin && opts.yAxis.length && opts.yAxis[1]) {
@@ -322,12 +325,12 @@ const initChat2 = () => {
 		})
 		opts.yAxis[1].max = yAxisData.reduce(
 			(s, a) => (s > Number(a) ? s : Number(a)),
-			0
+			0,
 		)
 		opts.yAxis[1].min = (
 			yAxisData.reduce(
 				(s, a) => (s < Number(a) ? s : Number(a)),
-				Number(yAxisData[0])
+				Number(yAxisData[0]),
 			) -
 			opts.yAxis[1].max * 0.05
 		).toFixed(0)
@@ -366,7 +369,7 @@ const initChat2 = () => {
 			formatter: (data: any) => {
 				let str = `${data[0].name}<br>`
 				const newData = data.filter(
-					(i: any) => i.value !== null && i.value !== undefined
+					(i: any) => i.value !== null && i.value !== undefined,
 				)
 				newData.map((a: any) => {
 					str += `${a.marker}<span style="color:#fff"><span style="width:5em;display:inline-block;">${a.seriesName}</span>`

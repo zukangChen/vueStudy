@@ -256,6 +256,24 @@ const transOptions = (result) => {
 		],
 		series: [
 			{
+				name: '背景',
+				type: 'bar',
+				barWidth: fontSizeWidth(16), // 柱子宽度
+				barGap: '-100%',
+				data: result.map((item) => 100),
+				// 禁止tooltip触发
+				tooltip: {
+					show: false,
+				},
+				itemStyle: {
+					normal: {
+						color: 'red',
+						opacity: 0,
+						barBorderRadius: [30, 30, 30, 30],
+					},
+				},
+			},
+			{
 				name: '',
 				type: 'bar',
 				barWidth: fontSizeWidth(16), // 柱子宽度
@@ -332,7 +350,6 @@ const init = () => {
 }
 const initChat = () => {
 	let option = transOptions(props.result)
-	// debugger
 	myChart.setOption(option)
 	myChart.off('click')
 	myChart.on('click', function (params: any) {
@@ -344,10 +361,13 @@ watch(
 	(_o, n: any) => {
 		init()
 	},
-	{ deep: true }
+	{ deep: true },
 )
 onMounted(() => {
-	init()
+	setTimeout(() => {
+		// 延迟渲染，防止图表渲染未占满父盒子
+		init()
+	})
 })
 let isStop = false
 onUnmounted(() => {

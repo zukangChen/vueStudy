@@ -13,15 +13,13 @@ const echarts = {
     Object.values(
       import.meta.globEager('@/components/echarts/**/*.vue'),
     ).forEach((component: any) => {
-      if (['pie'].includes(component.default.__name)) {
-        app.component(
-          `chart${
-            component.default.__name.slice(0, 1).toUpperCase() +
-            component.default.__name.slice(1)
-          }`,
-          component.default,
-        )
-      }
+      app.component(
+        `chart${
+          component.default.__name.slice(0, 1).toUpperCase() +
+          component.default.__name.slice(1)
+        }`,
+        component.default,
+      )
     })
   },
 }

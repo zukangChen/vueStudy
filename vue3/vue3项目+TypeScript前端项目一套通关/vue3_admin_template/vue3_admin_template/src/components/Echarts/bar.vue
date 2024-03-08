@@ -34,10 +34,13 @@ watch(
 		}
 		init()
 	}),
-	{ deep: true }
+	{ deep: true },
 )
 onMounted(() => {
-	init()
+	setTimeout(() => {
+		// 延迟渲染，防止图表渲染未占满父盒子
+		init()
+	})
 })
 let isStop = false
 onUnmounted(() => {
@@ -53,9 +56,9 @@ const init = () => {
 	) {
 		chart.value.innerHTML = `<div class="noData"><img src="${noData}"><span class="noDataText">暂无数据</span></div>`
 		return
-	}else if(!opts.data.length){
-		myChart.clear();
-		chart.value.innerHTML = `<div class="noData"><img src="${noData}"><span class="noDataText">暂无数据</span></div>`;
+	} else if (!opts.data.length) {
+		myChart.clear()
+		chart.value.innerHTML = `<div class="noData"><img src="${noData}"><span class="noDataText">暂无数据</span></div>`
 		return
 	}
 	if (myChart) {
@@ -68,7 +71,7 @@ const init = () => {
 			() => {
 				myChart.resize()
 			},
-			false
+			false,
 		)
 	}
 	if (opts.type === 2) {
@@ -116,11 +119,11 @@ const initChat = () => {
 					data.name
 				}</span><br>${data.marker.replace(
 					/10px/gi,
-					fontSizeWidth(10) + 'px'
+					fontSizeWidth(10) + 'px',
 				)} <span style="color:#fff">${
 					opts.tipName
 				}<span style="width:${fontSizeWidth(
-					100
+					100,
 				)}px;text-align:right;display:inline-block;font-weight:600">${
 					data.value
 				}${opts.unit}</span></span>`
@@ -229,8 +232,8 @@ const initChat = () => {
 }
 const initChat2 = () => {
 	const left =
-		opts.names.reduce((s, a) => (s > a.length ? s : a.length), 0) * 13;
-		console.info(opts)
+		opts.names.reduce((s, a) => (s > a.length ? s : a.length), 0) * 13
+	console.info(opts)
 	const options = {
 		color: opts.color,
 		grid: {
@@ -254,23 +257,19 @@ const initChat2 = () => {
 					.map((a: any, index: number) => {
 						str += `${a.marker.replace(
 							/10px/gi,
-							fontSizeWidth(10) + 'px'
-						)}<span style="font-size: ${fontSizeWidth(12)}px;"><span style="display:inline-block;width:${fontSizeWidth(
-							120
-						)}px;">${
-							a.seriesName
-						}</span><span style="width:${fontSizeWidth(
-							60
+							fontSizeWidth(10) + 'px',
+						)}<span style="font-size: ${fontSizeWidth(
+							12,
+						)}px;"><span style="display:inline-block;width:${fontSizeWidth(
+							120,
+						)}px;">${a.seriesName}</span><span style="width:${fontSizeWidth(
+							60,
 						)}px;font-size: ${fontSizeWidth(
-							12
+							12,
 						)}px;text-align:right;display:inline-block;font-weight:600;padding:${fontSizeWidth(
-							8
-						)}px ${fontSizeWidth(
-							12
-						)}px  ${fontSizeWidth(
-							8
-						)}px ${fontSizeWidth(
-							12
+							8,
+						)}px ${fontSizeWidth(12)}px  ${fontSizeWidth(8)}px ${fontSizeWidth(
+							12,
 						)}px;">${a.value}${opts.unit}</span></span>`
 						if ((index + 1) % 2 === 0) {
 							str += '<br>'
@@ -586,12 +585,12 @@ const initChat4 = () => {
 			max:
 				opts.data[1].data.reduce(
 					(s: number, t: any) => (s > Math.abs(t) ? s : Math.abs(t)),
-					0
+					0,
 				) + 10,
 			min:
 				-opts.data[0].data.reduce(
 					(s: number, t: any) => (s > Math.abs(t) ? s : Math.abs(t)),
-					0
+					0,
 				) - 10,
 		},
 		yAxis: [
@@ -679,7 +678,7 @@ const initChat4 = () => {
 					opts.data.map((a: any, key: number) => {
 						const max = a.data.reduce(
 							(s: number, t: any) => (s > Math.abs(t) ? s : Math.abs(t)),
-							0
+							0,
 						)
 						return {
 							type: 'bar',
@@ -702,7 +701,7 @@ const initChat4 = () => {
 								color: 'rgba(180, 180, 180, 0.2)',
 							},
 						}
-					})
+					}),
 				)
 		})(),
 	}
@@ -752,17 +751,23 @@ const initChat5 = () => {
 			backgroundColor: 'rgba(9, 10, 42, 0.56)',
 			textStyle: {
 				color: '#fff',
-				fontSize:fontSizeWidth(18)
+				fontSize: fontSizeWidth(18),
 			},
-			confine: true ,
+			confine: true,
 			formatter: (data: any) => {
 				let str = `${data[0].name}<br>`
 				data.map((a: any, index: number) => {
 					if (a.seriesName != '背景') {
-						str += `${a.marker}<span style="color:#fff"><span style="width:7em;display:inline-block;font-size:${fontSizeWidth(18)}px;">${a.seriesName}</span>`
-						str += `<span style="padding-right:10px;text-align:right;display:inline-block;font-weight:600;font-size:${fontSizeWidth(18)}px;">${
-							opts.data[index].data[a.dataIndex].sign
-						}${a.value}${opts.data[index].unit}</span></span><br>`
+						str += `${
+							a.marker
+						}<span style="color:#fff"><span style="width:7em;display:inline-block;font-size:${fontSizeWidth(
+							18,
+						)}px;">${a.seriesName}</span>`
+						str += `<span style="padding-right:10px;text-align:right;display:inline-block;font-weight:600;font-size:${fontSizeWidth(
+							18,
+						)}px;">${opts.data[index].data[a.dataIndex].sign}${a.value}${
+							opts.data[index].unit
+						}</span></span><br>`
 					}
 				})
 				return str
@@ -1505,8 +1510,8 @@ const initChat10 = () => {
 						fontSize: 14,
 					},
 					formatter: function (value, index) {
-						var num = ''
-						var str = ''
+						let num = ''
+						let str = ''
 						num = index + 1
 						str = '{name|' + opts.data[index].name + '}'
 						return str
@@ -1539,8 +1544,8 @@ const initChat10 = () => {
 						fontSize: 12,
 					},
 					formatter: function (value, index) {
-						var num = ''
-						var str = ''
+						let num = ''
+						let str = ''
 						num = index + 1
 						str = '{name|' + opts.data[index].value + '}'
 						return str

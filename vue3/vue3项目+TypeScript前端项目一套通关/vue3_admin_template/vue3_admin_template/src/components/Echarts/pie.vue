@@ -52,6 +52,7 @@ watch(
 )
 onMounted(() => {
 	setTimeout(() => {
+		// 延迟渲染，防止图表渲染未占满父盒子
 		init()
 	})
 })
@@ -1467,16 +1468,6 @@ const initChat6 = () => {
 		],
 	}
 	myChart.setOption(options)
-	myChart.on('highlight', (data: any) => {
-		console.log('hig')
-		if (!opts.data[data.dataIndex]) return
-		options.title.text = opts.data[data.dataIndex].name
-		options.title.subtext = `${(
-			(opts.data[data.dataIndex].value * 100) /
-			sum
-		).toFixed(2)}%`
-		// myChart.setOption(options)
-	})
 	let index = 0,
 		timer: any = null
 	const fn = () => {
@@ -1484,6 +1475,7 @@ const initChat6 = () => {
 		if (index == opts.data.length) {
 			index = 0
 		}
+		// console.log('aa')
 		myChart.dispatchAction({
 			type: 'highlight',
 			seriesIndex: 0,
@@ -1491,7 +1483,6 @@ const initChat6 = () => {
 		})
 		new Promise((resolve, reject) => {
 			isStop = true
-			console.log('hig2')
 			timer = window.setTimeout(() => {
 				window.clearTimeout(timer)
 				if (!myChart) return
@@ -1499,7 +1490,6 @@ const initChat6 = () => {
 			}, opts.timer)
 		}).then(() => {
 			isStop = false
-			console.log('hig3')
 			myChart.dispatchAction({
 				type: 'downplay',
 				seriesIndex: 0,
@@ -1507,10 +1497,22 @@ const initChat6 = () => {
 			})
 			index++
 			fn()
-			myChart.setOption(options)
+			// myChart.setOption(options)
 		})
 	}
 	if (opts.timer && !timer) {
+		// console.log('1')
+		myChart.off('highlight')
+		myChart.on('highlight', (data: any) => {
+			if (!opts.data[data.dataIndex]) return
+			options.title.text = opts.data[data.dataIndex].name
+			options.title.subtext = `${(
+				(opts.data[data.dataIndex].value * 100) /
+				sum
+			).toFixed(2)}%`
+			// console.log('2')
+			myChart.setOption(options)
+		})
 		fn()
 	}
 	//

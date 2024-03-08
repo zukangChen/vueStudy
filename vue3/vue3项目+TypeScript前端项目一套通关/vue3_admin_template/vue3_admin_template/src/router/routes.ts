@@ -102,6 +102,15 @@ export const constantRoute = [
           icon: 'calendar',
         },
       },
+      {
+        path: '/custom/BarEcharts',
+        component: () => import('@/views/custom/BarEcharts/index.vue'),
+        name: 'BarEcharts',
+        meta: {
+          title: '柱状图图表组件',
+          icon: 'calendar',
+        },
+      },
     ],
   },
 ]
