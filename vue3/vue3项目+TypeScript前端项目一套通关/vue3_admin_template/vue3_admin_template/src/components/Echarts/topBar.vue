@@ -224,11 +224,11 @@ const transOptions = (result) => {
 		],
 		dataZoom: [
 			{
-				show: result.length > 6,
+				show: result.length > 4,
 				startValue: 0, // 数据窗口范围的起始数值
-				endValue: 6, // 数据窗口范围的结束数值（一页显示多少条数据）
+				endValue: 4, // 数据窗口范围的结束数值（一页显示多少条数据）
 				type: 'slider',
-				maxValueSpan: 6, // 显示数据的条数(默认显示10个)
+				maxValueSpan: 4, // 显示数据的条数(默认显示10个)
 				handleSize: 0, // 滑动条的 左右2个滑动条的大小
 				height: '0', // 组件高度
 				width: '0',
@@ -294,7 +294,17 @@ const transOptions = (result) => {
 					position: 'left',
 					align: 'left',
 					formatter: function (params) {
-						return `${params.data.name}`
+						return `{a|${params.data.name}}`
+					},
+					rich: {
+						a: {
+							width: fontSizeWidth(420),
+							height: fontSizeWidth(40),
+							fontSize: fontSizeWidth(20),
+							fontWeight: 600,
+							color: '#5B6276',
+							backgroundColor: 'rgba(0,0,0,0)',
+						},
 					},
 				},
 				data: result.map((item, index) => {

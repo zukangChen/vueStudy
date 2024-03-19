@@ -53,6 +53,26 @@ export const chartData1 = reactive([
     product_name: '金4', // 产品名称
     title: '金4',
   },
+  {
+    timekey: '05',
+    unit: 't',
+    complete: 20,
+    production: 30, // 当月计划/当年计划
+    yoy: 10, // 当月同比/当年同比
+    mom: 20, // 当年环比/当年环比
+    product_name: '金5', // 产品名称
+    title: '金5',
+  },
+  {
+    timekey: '06',
+    unit: 't',
+    complete: 20,
+    production: 30, // 当月计划/当年计划
+    yoy: 10, // 当月同比/当年同比
+    mom: 20, // 当年环比/当年环比
+    product_name: '金6', // 产品名称
+    title: '金6',
+  },
 ])
 
 // 月度投资完成情况mock

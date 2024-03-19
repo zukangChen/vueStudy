@@ -1,10 +1,10 @@
 <template>
 	<div class="pieEcharts">
-		<el-tabs :tab-position="curTab" style="height: 200px" class="demo-tabs">
+		<el-tabs :tab-position="curTab" style="" class="demo-tabs">
 			<el-tab-pane v-for="(item, index) in tabs" :key="index" :label="item.name">
 				<div class="box" v-if="item.name === '图表一'">
 					<div class="content">
-						<CardView :CardData="{title: '饼图1'}">
+						<CardView :CardData="{title: '饼图1(支持图表整行点击事件)'}">
 							<template v-slot:headerRight>
 								<div class="Cardright">单位：个</div>
 							</template>
