@@ -25,6 +25,8 @@ import echarts from '@/components/Echarts'
 import rem from '@/utils/rem'
 
 import CardView from '@/components/CardView/index.vue'
+import { CommonTableConfig } from '@/components/CommonTable/TableConfig'
+import CommonTable from '@/components/CommonTable/index.vue'
 //获取应用实例对象
 const app = createApp(App)
 //安装element-plus插件
@@ -35,8 +37,12 @@ app.use(ElementPlus, {
 //安装自定义插件
 app.use(gloalComponent)
 
-//
+// 挂载全局组件
+app.component('CommonTable', CommonTable)
 app.component('CardView', CardView)
+
+// 挂载全局方法、对象
+app.config.globalProperties.$CommonTableConfig = CommonTableConfig
 
 //安装仓库
 app.use(pinia)

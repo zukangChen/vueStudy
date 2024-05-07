@@ -16,19 +16,27 @@
     "commitlint": "commitlint --config commitlint.config.cjs -e -V",
     "preinstall": "node ./scripts/preinstall.js",
     "build:test": "vue-tsc && vite build --mode test",
-    "build:pro": "vue-tsc && vite build --mode production"
+    "build:pro": "vue-tsc && vite build --mode production",
+    "iconfont": "node scripts/iconfont.js",
+    "icon2": "node scripts/icon2.js"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
     "axios": "^1.3.5",
+    "compressing": "^1.5.1",
     "echarts": "^5.4.2",
     "echarts-liquidfill": "^3.1.0",
     "element-plus": "^2.3.3",
+    "fs-extra": "^10.0.0",
+    "https": "^1.0.0",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.34",
     "progress": "^2.0.3",
+    "puppeteer": "^13.3.2",
+    "querystring": "^0.2.1",
+    "swiper": "^11.0.7",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6"
   },

@@ -113,6 +113,28 @@ export const constantRoute = [
       },
     ],
   },
+  {
+    path: '/customTable',
+    component: () => import('@/layout/index.vue'),
+    name: '数据表格',
+    meta: {
+      hidden: false,
+      title: '数据表格',
+      icon: 'Platform',
+    },
+    redirect: '/customTable/chartTable',
+    children: [
+      {
+        path: '/customTable/chartTable',
+        component: () => import('@/views/customTable/chartTable/index.vue'),
+        name: 'chartTable',
+        meta: {
+          title: '表格',
+          icon: 'calendar',
+        },
+      },
+    ],
+  },
 ]
 
 //异步路由
