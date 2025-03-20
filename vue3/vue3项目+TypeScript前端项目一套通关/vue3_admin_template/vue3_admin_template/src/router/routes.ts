@@ -111,6 +111,15 @@ export const constantRoute = [
           icon: 'calendar',
         },
       },
+      {
+        path: '/custom/PbEcharts',
+        component: () => import('@/views/custom/PbEcharts/index.vue'),
+        name: 'PbEcharts',
+        meta: {
+          title: '瀑布图图表组件',
+          icon: 'calendar',
+        },
+      },
     ],
   },
   {
