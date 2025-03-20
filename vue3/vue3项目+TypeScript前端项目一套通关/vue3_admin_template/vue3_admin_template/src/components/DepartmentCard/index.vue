@@ -193,11 +193,7 @@ import 'swiper/css/navigation' // 轮播图两边的左右箭头
 // import 'swiper/css/scrollbar'  // 轮播图的滚动条， 轮播图里一般不怎么会使用到滚动条，如果有用到的话import导入就行
 // 引入swiper核心和所需模块
 // ====
-const currActive = shallowRef(0)
-const totalPage = ref<number>(props.CardData.length)
-const pageSize = ref<number>(5) // 每页显示数量
-const page = ref<number>(1) // 当前页码
-let useSwiper: any = null // swiper实例
+
 const props = defineProps({
 	CardData: {
 		type: Array as PropType<CardDataItem[]>,
@@ -220,6 +216,11 @@ const props = defineProps({
 		}, // 传参默认值
 	},
 })
+const currActive = shallowRef(0)
+const totalPage = ref<number>(props.CardData.length)
+const pageSize = ref<number>(5) // 每页显示数量
+const page = ref<number>(1) // 当前页码
+let useSwiper: any = null // swiper实例
 
 const organizationKey = ref()
 

@@ -144,6 +144,28 @@ export const constantRoute = [
       },
     ],
   },
+  {
+    path: '/SpreadJS',
+    component: () => import('@/layout/index.vue'),
+    name: 'spread在线Excel编辑表格',
+    meta: {
+      hidden: false,
+      title: '数在线编辑表格据表格',
+      icon: 'Platform',
+    },
+    redirect: '/SpreadJS/index',
+    children: [
+      {
+        path: '/SpreadJS/index',
+        component: () => import('@/views/SpreadJS/index.vue'),
+        name: 'spreadjsTable',
+        meta: {
+          title: 'SpreadJS表格',
+          icon: 'calendar',
+        },
+      },
+    ],
+  },
 ]
 
 //异步路由
