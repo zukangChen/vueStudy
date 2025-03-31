@@ -160,7 +160,7 @@ export const constantRoute = [
         component: () => import('@/views/SpreadJS/index.vue'),
         name: 'spreadjsTable',
         meta: {
-          title: 'SpreadJS表格',
+          title: 'luckySheet表格',
           icon: 'calendar',
         },
       },

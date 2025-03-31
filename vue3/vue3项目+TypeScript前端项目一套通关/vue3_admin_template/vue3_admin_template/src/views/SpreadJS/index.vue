@@ -12,12 +12,10 @@
 			<el-radio-button value="收缴情况">收缴情况</el-radio-button>
 		</el-radio-group>
 		<div class="spreadBox">
-			<SpreadSheet v-if="tabName === '完整报表'" :spreadObj="spreadObj" />
-			<!-- <TestTable v-if="tabName === '完整报表'" :spreadObj="spreadObj" /> -->
-			<component v-else :is="SpreadSheetEdit" :spreadObj="spreadObj" :key="tabName"></component>
-			<!-- <SpreadSheetEdit v-else :spreadObj="spreadObj"></SpreadSheetEdit> -->
-			<!-- <SpreadSheetEdit v-else-if="tabName === '电量填报'" :spreadObj="spreadObj"></SpreadSheetEdit>
-			<SpreadSheetEdit v-else-if="tabName === '生产运营用电'" :spreadObj="spreadObj"></SpreadSheetEdit> -->
+			<!-- <SpreadSheet v-if="tabName === '完整报表'" :spreadObj="spreadObj" />
+			<component v-else :is="SpreadSheetEdit" :spreadObj="spreadObj" :key="tabName"></component> -->
+			<LuckySheetRead v-if="tabName === '完整报表'" :spreadObj="spreadObj" :tabName="tabName" :key="tabName"></LuckySheetRead>
+			<component v-else :is="luckySheet" :spreadObj="spreadObj" :tabName="tabName" :key="tabName"></component>
 
 		</div>
 	</div>
@@ -25,10 +23,12 @@
 </template>
  
 <script setup>
-import SpreadSheet from './components/SpreadSheet.vue'
-import SpreadSheetEdit from './components/SpreadSheetEdit.vue'
+import luckySheet from './components/luckySheet.vue'
+import LuckySheetRead from '@/views/SpreadJS/components/luckySheetRead.vue'
+// import SpreadSheet from './components/SpreadSheet.vue'
+// import SpreadSheetEdit from './components/SpreadSheetEdit.vue'
 import { onMounted, ref } from 'vue'
-import { headMap, tableDataMap } from './dataFilling/formDetail/detail'
+import { headMap, tableDataMap } from './components/detail'
 
 const tabName = ref('完整报表') // 当前tab名称
 const spreadObj = ref({
